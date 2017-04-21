@@ -1,0 +1,15 @@
+inputs,0
+file,D
+format,"""1920 1080 0 0 1920 1080 1 HD_1080"""
+first,1
+before,hold
+last,100
+after,hold
+origfirst,1
+origlast,100
+origset,true
+name,Read1
+selected,true
+xpos,0
+ypos,0
+disable,false

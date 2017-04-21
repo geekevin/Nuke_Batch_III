@@ -1,0 +1,14 @@
+project,name,PT_TV
+project,camera_name_example,EP_SC
+Root,format,1280 720 0 0 1280 720 1 HD_720
+Root,fps,25
+Root,first_frame,1
+write,file_type,tiff
+write,datatype,16 bit
+write,compression,none
+output,ext,tiff
+output,path,M:/``/OutPut/
+project,comprehensive_renderimages_path,S:\``\Renderimages\
+project,comprehensive_compositing_path,S:/``/Compositing/
+project,camera_data_path,S:\``\Camera\
+project,create_nuke_file_path,S:\``\NukeTemp\

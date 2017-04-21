@@ -1,0 +1,13 @@
+project_name,PT_TV
+cameraFormat,280 720 0 0 1280 720 1 HD_720
+cameraFps,25
+camera_name_example,P_SC
+write_file_type,iff
+write_datatype,16 bit
+write_compression,none
+camera_output_ext,tiff
+comprehensive_renderimages_path,S:\``\Renderimages\
+comprehensive_compositing_path,S:/``/Compositing/
+comprehensive_output_path,M:/``/OutPut/
+camera_data_path,S:\``\Camera\
+create_nuke_file_path,S:\``\NukeTemp\

@@ -1,0 +1,566 @@
+#! C:/Program Files/Nuke10.0v1/nuke-10.0.1.dll -nx
+#write_info Write4 file:"E:/ep007/output/046/e007_shot212_zhen1080.%04d.tga" format:"1920 1080 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1 32" fps:"0" colorspace:"default (sRGB)" datatype:"unknown" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 10.0 v1
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="54" y="-8" w="1874" h="1096" maximized="1" screen="0">
+        <splitter orientation="1">
+            <split size="1235"/>
+            <splitter orientation="2">
+                <split size="798"/>
+                <dock id="" activePageId="Viewer.1">
+                    <page id="Viewer.1"/>
+                </dock>
+                <split size="232"/>
+                <splitter orientation="1">
+                    <split size="496"/>
+                    <dock id="" hideTitles="1" activePageId="uk.co.thefoundry.histogram.1">
+                        <page id="uk.co.thefoundry.histogram.1"/>
+                    </dock>
+                    <split size="534"/>
+                    <dock id="" hideTitles="1" activePageId="uk.co.thefoundry.waveformscope.1">
+                        <page id="uk.co.thefoundry.waveformscope.1"/>
+                    </dock>
+                    <split size="197"/>
+                    <dock id="" hideTitles="1" activePageId="uk.co.thefoundry.vectorscope.1">
+                        <page id="uk.co.thefoundry.vectorscope.1"/>
+                    </dock>
+                </splitter>
+            </splitter>
+            <split size="619"/>
+            <splitter orientation="1">
+                <split size="575"/>
+                <dock id="" hideTitles="1" activePageId="Properties.1">
+                    <page id="Properties.1"/>
+                </dock>
+                <split size="40"/>
+                <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                    <page id="Toolbar.1"/>
+                </dock>
+            </splitter>
+        </splitter>
+    </window>
+    <window x="1920" y="-433" w="1087" h="1880" screen="1">
+        <splitter orientation="2">
+            <split size="1369"/>
+            <dock id="" activePageId="DAG.2" focus="true">
+                <page id="DAG.1"/>
+                <page id="uk.co.thefoundry.scripteditor.1"/>
+                <page id="DAG.2"/>
+            </dock>
+            <split size="468"/>
+            <dock id="" activePageId="Curve Editor.1">
+                <page id="Curve Editor.1"/>
+                <page id="DopeSheet.1"/>
+                <page id="Error Console.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name D:/Projects/Nuke_Batch_III/e019_mod_gamesa_108-109,112-119,172-192.nk
+ last_frame 32
+ fps 25
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file S:/Qmd_TV/Renderimages/EP019/ep019_shot108_Fin_T32/ID_Main/ID_Main_%04d.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 32
+ origlast 32
+ origset true
+ name Read3
+ xpos 397
+ ypos -350
+}
+Dot {
+ name Dot4
+ xpos 431
+ ypos -135
+}
+set N70b2800 [stack 0]
+Dot {
+ name Dot3
+ xpos 431
+ ypos 126
+}
+push $N70b2800
+Read {
+ inputs 0
+ file S:/Qmd_TV/Renderimages/EP019/ep019_shot108_Fin_T32/CH_Main/CH_Main_%04d.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 32
+ origlast 32
+ origset true
+ name Read1
+ xpos 210
+ ypos -348
+}
+Grade {
+ inputs 1+1
+ white 1.1
+ gamma 1.1
+ maskChannelMask rgba.red
+ name 星仔调色
+ xpos 210
+ ypos -139
+ disable true
+}
+Clamp {
+ inputs 1+1
+ maximum 0
+ invert_mask true
+ name id相关2
+ xpos 210
+ ypos 116
+}
+ColorCorrect {
+ saturation 0.92
+ gain 0.95
+ name ColorCorrect1
+ xpos 100
+ ypos 122
+}
+Read {
+ inputs 0
+ file S:/Qmd_TV/Renderimages/EP019/ep019_shot108_Fin_T32/Zdepth_Main/Zdepth_Main_%04d.exr
+ format "1920 1080 0 0 1920 1080 1 HD_1080"
+ last 32
+ origlast 32
+ origset true
+ name Read7
+ xpos -582
+ ypos -359
+}
+Keyer {
+ operation "luminance key"
+ range {0.1977790965 1 1 1}
+ name Keyer1
+ xpos -582
+ ypos -185
+}
+Shuffle {
+ red alpha
+ green alpha
+ blue alpha
+ name Shuffle1
+ xpos -582
+ ypos -147
+}
+Dot {
+ name Dot1
+ xpos -548
+ ypos 45
+}
+Group {
+ inputs 0
+ name 最外层_组2
+ xpos -17
+ ypos -258
+}
+ Read {
+  inputs 0
+  file S:/Qmd_TV/Renderimages/EP019/ep019_shot108_Fin_T32/Shadow_Main/Shadow_Main_%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  last 32
+  origlast 32
+  origset true
+  name Read5
+  xpos -187
+  ypos -436
+ }
+ Dot {
+  name Dot2
+  xpos -153
+  ypos -238
+ }
+ Read {
+  inputs 0
+  file S:/Qmd_TV/Renderimages/EP019/BG/ep019_shot108_Fin_T32_BG/BG_Moving/BG_Moving_%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  last 32
+  origlast 32
+  origset true
+  name Read9
+  xpos -65
+  ypos -438
+ }
+ Grade {
+  inputs 1+1
+  white {0.2599999905 0.2568539977 0.2456999868 0.2599999905}
+  mix 0.9
+  name s相关1
+  xpos -65
+  ypos -242
+ }
+ Output {
+  name Output1
+  xpos -65
+  ypos -142
+ }
+end_group
+Group {
+ inputs 0
+ name 最外层_组1
+ xpos -312
+ ypos -220
+}
+ Group {
+  inputs 0
+  name 组1中_组1
+  xpos -349
+  ypos -309
+ }
+  Read {
+   inputs 0
+   file S:/Sky/qmd/Sky3_kuan_yun.png
+   format "3895 1662 0 0 3895 1662 1 "
+   origset true
+   name Read2
+   xpos -392
+   ypos -409
+  }
+  Premult {
+   name Premult2
+   xpos -392
+   ypos -325
+  }
+  Read {
+   inputs 0
+   file S:/Sky/qmd/Sky3_kuan_tian.png
+   format "3895 1662 0 0 3895 1662 1 "
+   origset true
+   name Read6
+   xpos -497
+   ypos -412
+  }
+  Merge2 {
+   inputs 2
+   name Merge1
+   xpos -441
+   ypos -272
+  }
+  Output {
+   name Output1
+   xpos -441
+   ypos -172
+  }
+ end_group
+ Transform {
+  translate {-920 25}
+  scale 1.271999955
+  center {1144 232}
+  name sf相关1
+  xpos -349
+  ypos -176
+ }
+ Output {
+  name Output1
+  xpos -349
+  ypos -76
+ }
+end_group
+Group {
+ inputs 0
+ name Sky_Moving1
+ tile_color 0x6ac6c6ff
+ note_font "Verdana Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold Bold"
+ note_font_color 0xffffffff
+ selected true
+ xpos -474
+ ypos -322
+}
+ Camera2 {
+  inputs 0
+  display off
+  rot_order XYZ
+  translate {{curve x1 0} {curve x1 0} {curve x1 0}}
+  rotate {{curve x1 0} {curve x1 0} {curve x1 0}}
+  focal {{curve x1 40}}
+  haperture 35.99992752
+  vaperture 23.99995222
+  near 0.1000000015
+  file S:/Qmd_TV/Camera/EP007/ep007_shot001_Camera.fbx
+  fbx_node_name {{7} "Producer Perspective" "Producer Top" "Producer Bottom" "Producer Front" "Producer Back" "Producer Right" "Producer Left" CAM_EP007_shot001 cloneCam1}
+  frame_rate 25
+  name BG_Camera
+  xpos 1444
+  ypos 99
+ }
+set Nbff1c00 [stack 0]
+ Group {
+  inputs 0
+  name Sky_Moving1中_组2
+  xpos 1185
+  ypos -14
+ }
+  Read {
+   inputs 0
+   file S:/Sky/qmd/Sky3_kuan_tian.png
+   format "3895 1662 0 0 3895 1662 1 "
+   origset true
+   in_colorspace linear
+   out_colorspace linear
+   name Read8
+   xpos 366
+   ypos -133
+  }
+  Sphere {
+   radius 3000
+   u_extent 126
+   v_extent 35
+   close_bottom false
+   translate {0 200 0}
+   name Sphere1
+   xpos 366
+   ypos -10
+  }
+  Output {
+   name Output1
+   xpos 366
+   ypos 90
+  }
+ end_group
+ TransformGeo {
+  name TransformGeo1
+  xpos 1185
+  ypos 120
+ }
+ set Cc03d000 [stack 0]
+ Group {
+  inputs 0
+  name Sky_Moving1中_组1
+  xpos 1303
+  ypos -75
+ }
+  Read {
+   inputs 0
+   file S:/Sky/qmd/Sky3_kuan_yun.png
+   format "3895 1662 0 0 3895 1662 1 "
+   origset true
+   in_colorspace linear
+   out_colorspace linear
+   name Read10
+   xpos 366
+   ypos -148
+  }
+  Premult {
+   name Premult1
+   xpos 366
+   ypos -64
+  }
+  Output {
+   name Output1
+   xpos 366
+   ypos 36
+  }
+ end_group
+ Sphere {
+  radius 2000
+  u_extent 146
+  v_extent 63
+  close_bottom false
+  translate {0 200 0}
+  name Sphere4
+  xpos 1303
+  ypos 9
+ }
+clone $Cc03d000 {
+  xpos 1303
+  ypos 53
+  selected false
+ }
+push $Nbff1c00
+ Scene {
+  inputs 3
+  name Scene2
+  xpos 1313
+  ypos 99
+ }
+push 0
+ ScanlineRender {
+  inputs 3
+  motion_vectors_type velocity
+  name ScanlineRender2
+  xpos 1356
+  ypos 231
+ }
+ Output {
+  name Output2
+  xpos 1356
+  ypos 294
+ }
+ Viewer {
+  frame 1
+  frame_range 1-32
+  fps 25
+  input_process false
+  name Viewer2
+  xpos 1356
+  ypos 382
+ }
+end_group
+Constant {
+ inputs 0
+ channels rgb
+ name Constant2
+ xpos -474
+ ypos -44
+}
+Merge2 {
+ inputs 2
+ name sm相关1
+ xpos -474
+ ypos -96
+ disable true
+}
+Merge2 {
+ inputs 2
+ name sf相关3
+ xpos -312
+ ypos -96
+}
+Merge2 {
+ inputs 2
+ name Merge6
+ xpos -17
+ ypos -96
+}
+Group {
+ inputs 2
+ name 最外层_组5
+ xpos -17
+ ypos 41
+}
+ Input {
+  inputs 0
+  name Input4
+  selected true
+  xpos -222
+  ypos -61
+  number 3
+ }
+ Input {
+  inputs 0
+  name Input3
+  xpos 117
+  ypos -27
+  number 2
+ }
+ Input {
+  inputs 0
+  name Input2
+  xpos 16
+  ypos -77
+  number 1
+ }
+ Input {
+  inputs 0
+  name Input1
+  xpos -92
+  ypos -76
+ }
+ OFXcom.frischluft.openfx.depthoffield_v1 {
+  inputs 4
+  show "normal blur"
+  radius 7
+  focal_distance 233.1708679
+  focal_point {1060 714}
+  highlight_intensity 0
+  gamma_correction true
+  "-> Depth Buffer..." 1
+  depth_invert false
+  depth_curve 1
+  black_point 0
+  white_point 1
+  "-> Iris..." 1
+  iris_rounded 1
+  iris_facets 3
+  iris_angle 0
+  iris_border_thickness 0.3
+  iris_border_brightness 0
+  iris_aspect 0
+  "-> Highlight Selection..." 1
+  lightness_start 0.8
+  lightness_end 1
+  lightness_soften 0
+  "-> Outside Image..." 1
+  outside_horizontal "border color"
+  outside_vertical "border color"
+  outside_color 0
+  name z相关
+  xpos -92
+  ypos 8
+ }
+ ColorCorrect {
+  saturation 0.97
+  gain 0.95
+  name ColorCorrect2
+  xpos -92
+  ypos 47
+ }
+ Output {
+  name Output1
+  xpos -92
+  ypos 147
+ }
+end_group
+Merge2 {
+ inputs 2
+ name Merge2
+ xpos -17
+ ypos 122
+}
+Write {
+ file E:/ep007/output/046/e007_shot212_zhen1080.####.tga
+ file_type targa
+ checkHashOnRead false
+ version 7
+ name Write4
+ xpos -17
+ ypos 224
+}
+Viewer {
+ frame 1
+ frame_range 1-32
+ fps 25
+ name Viewer1
+ xpos -13
+ ypos 338
+}
+Clamp {
+ inputs 0
+ name Clamp1
+ xpos 325
+ ypos 235
+}
+Group {
+ inputs 0
+ name 最外层_组3
+ xpos 534
+ ypos -318
+}
+ Read {
+  inputs 0
+  file S:/Qmd_TV/Renderimages/EP019/ep019_shot108_Fin_T32/ID_RGB/ID_RGB_%04d.exr
+  format "1920 1080 0 0 1920 1080 1 HD_1080"
+  last 32
+  origlast 32
+  origset true
+  in_colorspace linear
+  out_colorspace linear
+  name Read4
+  xpos 366
+  ypos -322
+ }
+ Output {
+  name Output1
+  xpos 366
+  ypos -222
+ }
+end_group

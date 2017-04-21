@@ -1,0 +1,9 @@
+channels,rgb
+file,D
+file_type,targa
+checkHashOnRead,false
+name,Write1
+selected,true
+xpos,-65
+ypos,-124
+disable,false

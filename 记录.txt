@@ -1,0 +1,8 @@
+161028
+组的头文件也算作是节点
+===========================================
+161021
+给借点类(nukeNode)添加layerName函数和self.layerNameStr属性
+self.layerNameStr属性是为了素材序列能定位到对应节点
+
+programDir 程序路径
